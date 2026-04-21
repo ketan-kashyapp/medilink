@@ -6,15 +6,9 @@ export default function Home() {
         <h1 className="text-xl font-bold text-violet-600">MediLink</h1>
 
         <div className="hidden items-center gap-6 text-gray-600 md:flex">
-          <a href="#" className="transition hover:text-violet-600">
-            Features
-          </a>
-          <a href="#" className="transition hover:text-violet-600">
-            About
-          </a>
-          <a href="#" className="transition hover:text-violet-600">
-            Contact
-          </a>
+          <a href="#features" className="transition hover:text-violet-600">Features</a>
+          <a href="#about" className="transition hover:text-violet-600">About</a>
+          <a href="#contact" className="transition hover:text-violet-600">Contact</a>
         </div>
 
         <button className="rounded-xl bg-violet-600 px-4 py-2 text-white transition hover:bg-violet-700">
@@ -139,7 +133,10 @@ export default function Home() {
       </section>
 
       {/* FEATURES SECTION */}
-      <section className="mx-auto mt-4 max-w-7xl rounded-3xl bg-white/60 px-6 py-20 backdrop-blur-md">
+      <section
+        id="features"
+        className="mx-auto max-w-7xl rounded-3xl bg-white/60 px-6 py-20 backdrop-blur-md"
+      >
         <div className="mx-auto max-w-2xl text-center">
           <h2 className="text-3xl font-bold text-gray-900 md:text-4xl">
             Everything you need for smarter healthcare
@@ -207,7 +204,7 @@ export default function Home() {
       </section>
 
       {/* HOW IT WORKS SECTION */}
-      <section className="mx-auto max-w-7xl px-6 py-20">
+      <section id="about" className="mx-auto max-w-7xl px-6 py-20">
         <div className="mx-auto max-w-2xl text-center">
           <h2 className="text-3xl font-bold text-gray-900 md:text-4xl">
             How MediLink Works
@@ -255,6 +252,18 @@ export default function Home() {
           </div>
         </div>
       </section>
+      {/* FOOTER */}
+      <footer
+        id="contact"
+        className="mx-auto mt-10 max-w-7xl px-6 py-8 text-center text-sm text-gray-500"
+      >
+        <div className="border-t border-violet-100 pt-6">
+          <p className="font-medium text-gray-700">MediLink</p>
+          <p className="mt-2">
+            Built by Ketan Kashyap • A modern unified health records platform
+          </p>
+        </div>
+      </footer>
     </main >
   );
 }
