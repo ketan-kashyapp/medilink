@@ -205,6 +205,56 @@ export default function Home() {
 
         </div>
       </section>
+
+      {/* HOW IT WORKS SECTION */}
+      <section className="mx-auto max-w-7xl px-6 py-20">
+        <div className="mx-auto max-w-2xl text-center">
+          <h2 className="text-3xl font-bold text-gray-900 md:text-4xl">
+            How MediLink Works
+          </h2>
+          <p className="mt-4 text-gray-600">
+            A simple and secure flow to manage health records digitally.
+          </p>
+        </div>
+
+        <div className="mt-12 grid gap-6 md:grid-cols-3">
+          <div className="rounded-3xl bg-white p-6 shadow-sm border border-violet-100 transition duration-300 hover:-translate-y-2 hover:shadow-xl">
+            <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-2xl bg-violet-100 text-lg font-bold text-violet-700">
+              1
+            </div>
+            <h3 className="text-xl font-semibold text-gray-900">
+              Create Health ID
+            </h3>
+            <p className="mt-3 text-sm leading-7 text-gray-600">
+              Every patient gets a unique digital health identity for lifelong record access.
+            </p>
+          </div>
+
+          <div className="rounded-3xl bg-white p-6 shadow-sm border border-violet-100 transition duration-300 hover:-translate-y-2 hover:shadow-xl">
+            <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-2xl bg-violet-100 text-lg font-bold text-violet-700">
+              2
+            </div>
+            <h3 className="text-xl font-semibold text-gray-900">
+              Doctor Updates Records
+            </h3>
+            <p className="mt-3 text-sm leading-7 text-gray-600">
+              Prescriptions, reports, and consultations are digitally added to the patient profile.
+            </p>
+          </div>
+
+          <div className="rounded-3xl bg-white p-6 shadow-sm border border-violet-100 transition duration-300 hover:-translate-y-2 hover:shadow-xl">
+            <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-2xl bg-violet-100 text-lg font-bold text-violet-700">
+              3
+            </div>
+            <h3 className="text-xl font-semibold text-gray-900">
+              Access Anywhere
+            </h3>
+            <p className="mt-3 text-sm leading-7 text-gray-600">
+              Use QR-based access to instantly view essential health data in emergencies or visits.
+            </p>
+          </div>
+        </div>
+      </section>
     </main >
   );
 }
