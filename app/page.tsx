@@ -1,19 +1,97 @@
+"use client";
+
+import {
+  IdCard,
+  FileText,
+  Brain,
+  Ambulance,
+  Shield,
+  Lock,
+  Menu,
+  X,
+} from "lucide-react";
+import { useEffect, useState } from "react";
+
 export default function Home() {
+  const [scrolled, setScrolled] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 20);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   return (
     <main className="min-h-screen bg-gradient-to-br from-white via-violet-50 to-fuchsia-50 px-6 py-4">
       {/* NAVBAR */}
-      <nav className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
-        <h1 className="text-xl font-bold text-violet-600">MediLink</h1>
+      <nav
+        className={`sticky top-0 z-50 mx-auto max-w-7xl px-6 py-4 backdrop-blur-md bg-white/70 transition ${
+          scrolled ? "shadow-md rounded-2xl" : ""
+        }`}
+      >
+        <div className="flex items-center justify-between">
+          <h1 className="text-xl font-bold text-violet-600">MediLink</h1>
 
-        <div className="hidden items-center gap-6 text-gray-600 md:flex">
-          <a href="#features" className="transition hover:text-violet-600">Features</a>
-          <a href="#about" className="transition hover:text-violet-600">About</a>
-          <a href="#contact" className="transition hover:text-violet-600">Contact</a>
+          {/* Desktop Links */}
+          <div className="hidden items-center gap-6 text-gray-600 md:flex">
+            <a href="#features" className="transition hover:text-violet-600">
+              Features
+            </a>
+            <a href="#about" className="transition hover:text-violet-600">
+              About
+            </a>
+            <a href="#contact" className="transition hover:text-violet-600">
+              Contact
+            </a>
+          </div>
+
+          {/* Desktop Button */}
+          <button className="hidden rounded-xl bg-violet-600 px-4 py-2 text-white transition hover:bg-violet-700 md:block">
+            Login
+          </button>
+
+          {/* Mobile Menu Button */}
+          <button
+            className="rounded-xl p-2 text-violet-600 transition hover:bg-violet-100 md:hidden"
+            onClick={() => setMenuOpen(!menuOpen)}
+          >
+            {menuOpen ? <X size={24} /> : <Menu size={24} />}
+          </button>
         </div>
 
-        <button className="rounded-xl bg-violet-600 px-4 py-2 text-white transition hover:bg-violet-700">
-          Login
-        </button>
+        {/* Mobile Menu */}
+        {menuOpen && (
+          <div className="mt-4 flex flex-col gap-4 rounded-2xl border border-violet-100 bg-white p-4 shadow-sm md:hidden">
+            <a
+              href="#features"
+              className="text-gray-700 transition hover:text-violet-600"
+              onClick={() => setMenuOpen(false)}
+            >
+              Features
+            </a>
+            <a
+              href="#about"
+              className="text-gray-700 transition hover:text-violet-600"
+              onClick={() => setMenuOpen(false)}
+            >
+              About
+            </a>
+            <a
+              href="#contact"
+              className="text-gray-700 transition hover:text-violet-600"
+              onClick={() => setMenuOpen(false)}
+            >
+              Contact
+            </a>
+            <button className="rounded-xl bg-violet-600 px-4 py-2 text-white transition hover:bg-violet-700">
+              Login
+            </button>
+          </div>
+        )}
       </nav>
 
       {/* HERO SECTION */}
@@ -48,8 +126,14 @@ export default function Home() {
             </button>
           </div>
 
-          <div className="mt-10 grid grid-cols-3 gap-4 max-w-xl">
+          <div className="mt-8 flex flex-wrap items-center justify-center gap-6 text-sm text-gray-500 lg:justify-start">
+            <span>Secure Records</span>
+            <span>QR Access</span>
+            <span>Smart Insights</span>
+          </div>
 
+          {/* STATS */}
+          <div className="mt-10 grid max-w-xl grid-cols-3 gap-4">
             {[
               { value: "10K+", label: "Health Records" },
               { value: "200+", label: "Doctors Connected" },
@@ -57,7 +141,7 @@ export default function Home() {
             ].map((item, i) => (
               <div
                 key={i}
-                className="group cursor-pointer rounded-2xl bg-white/70 p-4 shadow-sm transition duration-300 hover:-translate-y-2 hover:scale-[1.05] hover:shadow-xl"
+                className="group cursor-pointer rounded-2xl bg-white/70 p-4 shadow-sm transition duration-300 hover:-translate-y-2 hover:scale-[1.05] hover:bg-white hover:shadow-[0_10px_30px_rgba(139,92,246,0.25)]"
               >
                 <p className="text-2xl font-bold text-violet-600 transition group-hover:text-fuchsia-500">
                   {item.value}
@@ -65,7 +149,6 @@ export default function Home() {
                 <p className="text-sm text-gray-500">{item.label}</p>
               </div>
             ))}
-
           </div>
         </div>
 
@@ -135,7 +218,7 @@ export default function Home() {
       {/* FEATURES SECTION */}
       <section
         id="features"
-        className="mx-auto max-w-7xl rounded-3xl bg-white/60 px-6 py-20 backdrop-blur-md"
+        className="mx-auto mt-4 max-w-7xl rounded-3xl bg-white/60 px-6 py-20 backdrop-blur-md"
       >
         <div className="mx-auto max-w-2xl text-center">
           <h2 className="text-3xl font-bold text-gray-900 md:text-4xl">
@@ -149,35 +232,34 @@ export default function Home() {
         </div>
 
         <div className="mt-10 grid grid-cols-1 gap-6 md:grid-cols-3">
-
           {[
             {
-              icon: "🆔",
+              icon: <IdCard size={28} />,
               title: "Unique Health ID",
               desc: "One permanent ID for your complete medical history.",
             },
             {
-              icon: "📁",
+              icon: <FileText size={28} />,
               title: "Medical Records",
               desc: "Access all prescriptions, reports, and history anytime.",
             },
             {
-              icon: "🤖",
+              icon: <Brain size={28} />,
               title: "AI Insights",
               desc: "Smart analysis of your health data for better decisions.",
             },
             {
-              icon: "🚑",
+              icon: <Ambulance size={28} />,
               title: "Emergency Access",
               desc: "Instant access to critical data using QR code.",
             },
             {
-              icon: "🔐",
+              icon: <Lock size={28} />,
               title: "Secure Sharing",
               desc: "Share your records securely with doctors anytime.",
             },
             {
-              icon: "🛡️",
+              icon: <Shield size={28} />,
               title: "Privacy Control",
               desc: "Full control over who can access your data.",
             },
@@ -186,7 +268,7 @@ export default function Home() {
               key={i}
               className="rounded-3xl border border-violet-100 bg-white p-6 shadow-sm transition duration-300 hover:-translate-y-2 hover:scale-[1.03] hover:shadow-2xl"
             >
-              <div className="mb-4 flex h-14 w-14 items-center justify-center rounded-2xl bg-violet-50 text-3xl shadow-sm">
+              <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-violet-100 text-violet-600">
                 {card.icon}
               </div>
 
@@ -199,7 +281,6 @@ export default function Home() {
               </p>
             </div>
           ))}
-
         </div>
       </section>
 
@@ -215,7 +296,7 @@ export default function Home() {
         </div>
 
         <div className="mt-12 grid gap-6 md:grid-cols-3">
-          <div className="rounded-3xl bg-white p-6 shadow-sm border border-violet-100 transition duration-300 hover:-translate-y-2 hover:shadow-xl">
+          <div className="rounded-3xl border border-violet-100 bg-white p-6 shadow-sm transition duration-300 hover:-translate-y-2 hover:shadow-xl">
             <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-2xl bg-violet-100 text-lg font-bold text-violet-700">
               1
             </div>
@@ -223,11 +304,12 @@ export default function Home() {
               Create Health ID
             </h3>
             <p className="mt-3 text-sm leading-7 text-gray-600">
-              Every patient gets a unique digital health identity for lifelong record access.
+              Every patient gets a unique digital health identity for lifelong
+              record access.
             </p>
           </div>
 
-          <div className="rounded-3xl bg-white p-6 shadow-sm border border-violet-100 transition duration-300 hover:-translate-y-2 hover:shadow-xl">
+          <div className="rounded-3xl border border-violet-100 bg-white p-6 shadow-sm transition duration-300 hover:-translate-y-2 hover:shadow-xl">
             <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-2xl bg-violet-100 text-lg font-bold text-violet-700">
               2
             </div>
@@ -235,11 +317,12 @@ export default function Home() {
               Doctor Updates Records
             </h3>
             <p className="mt-3 text-sm leading-7 text-gray-600">
-              Prescriptions, reports, and consultations are digitally added to the patient profile.
+              Prescriptions, reports, and consultations are digitally added to
+              the patient profile.
             </p>
           </div>
 
-          <div className="rounded-3xl bg-white p-6 shadow-sm border border-violet-100 transition duration-300 hover:-translate-y-2 hover:shadow-xl">
+          <div className="rounded-3xl border border-violet-100 bg-white p-6 shadow-sm transition duration-300 hover:-translate-y-2 hover:shadow-xl">
             <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-2xl bg-violet-100 text-lg font-bold text-violet-700">
               3
             </div>
@@ -247,11 +330,13 @@ export default function Home() {
               Access Anywhere
             </h3>
             <p className="mt-3 text-sm leading-7 text-gray-600">
-              Use QR-based access to instantly view essential health data in emergencies or visits.
+              Use QR-based access to instantly view essential health data in
+              emergencies or visits.
             </p>
           </div>
         </div>
       </section>
+
       {/* FOOTER */}
       <footer
         id="contact"
@@ -264,6 +349,6 @@ export default function Home() {
           </p>
         </div>
       </footer>
-    </main >
+    </main>
   );
 }
