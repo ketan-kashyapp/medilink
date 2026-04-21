@@ -23,7 +23,7 @@ export default function Home() {
       </nav>
 
       {/* HERO SECTION */}
-      <section className="mx-auto flex min-h-[80vh] max-w-7xl flex-col items-start justify-between gap-12 lg:flex-row">
+      <section className="mx-auto flex min-h-[72vh] max-w-7xl flex-col items-start justify-between gap-10 lg:flex-row">
         {/* LEFT SIDE */}
         <div className="max-w-2xl text-center lg:text-left">
           <span className="inline-block rounded-full border border-violet-200 bg-white px-4 py-2 text-sm font-medium text-violet-700 shadow-sm">
@@ -54,130 +54,151 @@ export default function Home() {
             </button>
           </div>
 
-          <div className="mt-8 flex flex-wrap items-center justify-center gap-6 text-sm text-gray-500 lg:justify-start">
-            <span>Secure Records</span>
-            <span>QR Access</span>
-            <span>Smart Insights</span>
+          <div className="mt-10 grid grid-cols-3 gap-4 max-w-xl">
+
+            {[
+              { value: "10K+", label: "Health Records" },
+              { value: "200+", label: "Doctors Connected" },
+              { value: "24/7", label: "Emergency Access" },
+            ].map((item, i) => (
+              <div
+                key={i}
+                className="group cursor-pointer rounded-2xl bg-white/70 p-4 shadow-sm transition duration-300 hover:-translate-y-2 hover:scale-[1.05] hover:shadow-xl"
+              >
+                <p className="text-2xl font-bold text-violet-600 transition group-hover:text-fuchsia-500">
+                  {item.value}
+                </p>
+                <p className="text-sm text-gray-500">{item.label}</p>
+              </div>
+            ))}
+
           </div>
-        </div>
+           </div>
 
-        {/* RIGHT CARD */}
-        <div className="mt-6 w-full max-w-lg lg:mt-0">
-          <div className="rounded-3xl border border-white/70 bg-white/85 p-6 shadow-[0_20px_60px_rgba(91,33,182,0.12)] backdrop-blur-md">
-            <div className="mb-5 flex items-start justify-between gap-4">
-              <div>
-                <p className="text-sm text-gray-500">Patient Dashboard</p>
-                <h3 className="text-2xl font-bold text-gray-900">
-                  Ketan Kashyap
-                </h3>
-                <p className="mt-1 text-sm text-gray-500">Age: 20</p>
-              </div>
-
-              <div className="rounded-full bg-red-100 px-3 py-1 text-xs font-medium text-red-600">
-                Emergency Ready
-              </div>
+      {/* RIGHT CARD */}
+      <div className="mt-2 w-full max-w-lg lg:mt-0">
+        <div className="rounded-3xl border border-white/70 bg-white/85 p-6 shadow-[0_20px_60px_rgba(91,33,182,0.12)] backdrop-blur-md">
+          <div className="mb-5 flex items-start justify-between gap-4">
+            <div>
+              <p className="text-sm text-gray-500">Patient Dashboard</p>
+              <h3 className="text-2xl font-bold text-gray-900">
+                Ketan Kashyap
+              </h3>
+              <p className="mt-1 text-sm text-gray-500">Age: 20</p>
             </div>
 
-            <div className="space-y-4">
-              <div className="rounded-2xl bg-violet-50 p-4">
-                <p className="text-sm text-gray-500">Health ID</p>
-                <p className="mt-1 font-semibold text-gray-900">
-                  ML-KETAN-2026
-                </p>
-              </div>
+            <div className="rounded-full bg-red-100 px-3 py-1 text-xs font-medium text-red-600">
+              Emergency Ready
+            </div>
+          </div>
 
-              <div className="grid grid-cols-2 gap-4">
-                <div className="rounded-2xl bg-gray-50 p-4">
-                  <p className="text-sm text-gray-500">Blood Group</p>
-                  <p className="mt-1 font-semibold text-gray-900">B+</p>
-                </div>
+          <div className="space-y-4">
+            <div className="rounded-2xl bg-violet-50 p-4">
+              <p className="text-sm text-gray-500">Health ID</p>
+              <p className="mt-1 font-semibold text-gray-900">
+                ML-KETAN-2026
+              </p>
+            </div>
 
-                <div className="rounded-2xl bg-gray-50 p-4">
-                  <p className="text-sm text-gray-500">Allergy</p>
-                  <p className="mt-1 font-semibold text-gray-900">
-                    Dust Allergy
-                  </p>
-                </div>
+            <div className="grid grid-cols-2 gap-4">
+              <div className="rounded-2xl bg-gray-50 p-4">
+                <p className="text-sm text-gray-500">Blood Group</p>
+                <p className="mt-1 font-semibold text-gray-900">B+</p>
               </div>
 
               <div className="rounded-2xl bg-gray-50 p-4">
-                <p className="text-sm text-gray-500">Last Prescription</p>
+                <p className="text-sm text-gray-500">Allergy</p>
                 <p className="mt-1 font-semibold text-gray-900">
-                  General Checkup + Vitamin D
-                </p>
-                <p className="mt-1 text-sm text-gray-500">Updated 2 days ago</p>
-              </div>
-
-              <div className="rounded-2xl bg-gradient-to-r from-violet-600 to-fuchsia-500 p-4 text-white">
-                <p className="text-sm opacity-90">AI Insight</p>
-                <p className="mt-1 font-semibold">
-                  Repeated health activity detected. Keep your records updated
-                  for better consultation.
+                  Dust Allergy
                 </p>
               </div>
             </div>
 
-            <p className="mt-4 text-center text-xs text-gray-400">
-              Demo profile — real patient data will be securely stored
-            </p>
+            <div className="rounded-2xl bg-gray-50 p-4">
+              <p className="text-sm text-gray-500">Last Prescription</p>
+              <p className="mt-1 font-semibold text-gray-900">
+                General Checkup + Vitamin D
+              </p>
+              <p className="mt-1 text-sm text-gray-500">Updated 2 days ago</p>
+            </div>
+
+            <div className="rounded-2xl bg-gradient-to-r from-violet-600 to-fuchsia-500 p-4 text-white">
+              <p className="text-sm opacity-90">AI Insight</p>
+              <p className="mt-1 font-semibold">
+                Repeated health activity detected. Keep your records updated
+                for better consultation.
+              </p>
+            </div>
           </div>
-        </div>
-      </section>
 
-      {/* FEATURES SECTION */}
-      <section className="mx-auto max-w-7xl rounded-3xl bg-white/60 px-6 py-20 backdrop-blur-md">
-        {/* HEADING */}
-        <div className="mx-auto max-w-2xl text-center">
-          <h2 className="text-3xl font-bold text-gray-900 md:text-4xl">
-            Everything you need for smarter healthcare
-          </h2>
-
-          <p className="mt-4 text-gray-600">
-            Manage records, access emergency data, and get AI-powered insights
-            — all in one place.
+          <p className="mt-4 text-center text-xs text-gray-400">
+            Demo profile — real patient data will be securely stored
           </p>
         </div>
+      </div>
+    </section>
 
-        {/* CARDS */}
-        <div className="mt-10 grid grid-cols-1 gap-6 md:grid-cols-3">
-          {[
-            {
-              title: "Unique Health ID",
-              desc: "One permanent ID for your complete medical history.",
-            },
-            {
-              title: "Medical Records",
-              desc: "Access all prescriptions, reports, and history anytime.",
-            },
-            {
-              title: "AI Insights",
-              desc: "Smart analysis of your health data for better decisions.",
-            },
-            {
-              title: "Emergency Access",
-              desc: "Instant access to critical data using QR code.",
-            },
-            {
-              title: "Secure Sharing",
-              desc: "Share your records securely with doctors anytime.",
-            },
-            {
-              title: "Privacy Control",
-              desc: "Full control over who can access your data.",
-            },
-          ].map((card, i) => (
-            <div
-              key={i}
-              className="rounded-2xl bg-white p-6 shadow-md transition duration-300 hover:-translate-y-2 hover:scale-[1.03] hover:shadow-2xl"
-            >
-              <h3 className="text-lg font-semibold text-gray-900">
-                {card.title}
-              </h3>
-              <p className="mt-2 text-sm text-gray-600">{card.desc}</p>
-            </div>
-          ))}
+      {/* FEATURES SECTION */ }
+  <section className="mx-auto mt-4 max-w-7xl rounded-3xl bg-white/60 px-6 py-20 backdrop-blur-md">
+    <div className="mx-auto max-w-2xl text-center">
+      <h2 className="text-3xl font-bold text-gray-900 md:text-4xl">
+        Everything you need for smarter healthcare
+      </h2>
+
+      <p className="mt-4 text-gray-600">
+        Manage records, access emergency data, and get AI-powered insights
+        — all in one place.
+      </p>
+    </div>
+
+    <div className="mt-10 grid grid-cols-1 gap-6 md:grid-cols-3">
+      {[
+        {
+          icon: "🆔",
+          title: "Unique Health ID",
+          desc: "One permanent ID for your complete medical history.",
+        },
+        {
+          icon: "📁",
+          title: "Medical Records",
+          desc: "Access all prescriptions, reports, and history anytime.",
+        },
+        {
+          icon: "🤖",
+          title: "AI Insights",
+          desc: "Smart analysis of your health data for better decisions.",
+        },
+        {
+          icon: "🚑",
+          title: "Emergency Access",
+          desc: "Instant access to critical data using QR code.",
+        },
+        {
+          icon: "🔐",
+          title: "Secure Sharing",
+          desc: "Share your records securely with doctors anytime.",
+        },
+        {
+          icon: "🛡️",
+          title: "Privacy Control",
+          desc: "Full control over who can access your data.",
+        },
+      ].map((card, i) => (
+        <div
+          key={i}
+          className="rounded-2xl bg-white p-6 shadow-md transition duration-300 hover:-translate-y-2 hover:scale-[1.03] hover:shadow-2xl"
+        >
+          <div className="mb-4 text-3xl">{card.icon}</div>
+
+          <h3 className="text-lg font-semibold text-gray-900">
+            {card.title}
+          </h3>
+
+          <p className="mt-2 text-sm text-gray-600">{card.desc}</p>
         </div>
-      </section>
-    </main>
+      ))}
+    </div>
+  </section>
+    </main >
   );
 }
