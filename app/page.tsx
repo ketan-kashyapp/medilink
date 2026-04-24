@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import {
   IdCard,
   FileText,
@@ -30,7 +31,7 @@ export default function Home() {
       {/* NAVBAR */}
       <nav
         className={`sticky top-0 z-50 mx-auto max-w-7xl px-6 py-4 backdrop-blur-md bg-white/70 transition ${
-          scrolled ? "shadow-md rounded-2xl" : ""
+          scrolled ? "rounded-2xl shadow-md" : ""
         }`}
       >
         <div className="flex items-center justify-between">
@@ -50,9 +51,12 @@ export default function Home() {
           </div>
 
           {/* Desktop Button */}
-          <button className="hidden rounded-xl bg-violet-600 px-4 py-2 text-white transition hover:bg-violet-700 md:block">
-            Login
-          </button>
+          <Link
+            href="/patient"
+            className="hidden rounded-xl bg-violet-600 px-4 py-2 text-white transition hover:bg-violet-700 md:block"
+          >
+            Dashboard
+          </Link>
 
           {/* Mobile Menu Button */}
           <button
@@ -87,9 +91,13 @@ export default function Home() {
             >
               Contact
             </a>
-            <button className="rounded-xl bg-violet-600 px-4 py-2 text-white transition hover:bg-violet-700">
-              Login
-            </button>
+            <Link
+              href="/patient"
+              className="rounded-xl bg-violet-600 px-4 py-2 text-center text-white transition hover:bg-violet-700"
+              onClick={() => setMenuOpen(false)}
+            >
+              Dashboard
+            </Link>
           </div>
         )}
       </nav>
@@ -117,13 +125,19 @@ export default function Home() {
           </p>
 
           <div className="mt-8 flex flex-col gap-4 sm:flex-row sm:justify-center lg:justify-start">
-            <button className="rounded-2xl bg-violet-600 px-6 py-3 text-white shadow-lg transition hover:bg-violet-700">
+            <Link
+              href="/patient"
+              className="rounded-2xl bg-violet-600 px-6 py-3 text-center text-white shadow-lg transition hover:bg-violet-700"
+            >
               Get Started
-            </button>
+            </Link>
 
-            <button className="rounded-2xl border border-gray-300 bg-white px-6 py-3 text-gray-700 transition hover:border-violet-300 hover:text-violet-600">
+            <Link
+              href="/patient"
+              className="rounded-2xl border border-gray-300 bg-white px-6 py-3 text-center text-gray-700 transition hover:border-violet-300 hover:text-violet-600"
+            >
               View Demo
-            </button>
+            </Link>
           </div>
 
           <div className="mt-8 flex flex-wrap items-center justify-center gap-6 text-sm text-gray-500 lg:justify-start">
